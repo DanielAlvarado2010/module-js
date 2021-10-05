@@ -1,16 +1,7 @@
-let numeroA =parseInt(window.prompt("Dame dos numeros y te dire cual es mayor, ahora ingresa el primero"));
-let numeroB =parseInt(window.prompt("Dame el segundo numero"));
+let nombre = window.prompt("Introduce tu nombre y te diré cuántos caracteres tiene")
 
-if (numeroA<numeroB) {
-    console.log(`El numero ${numeroB} es el mayor`);
-    console.log(`El numero ${numeroA} es el menor`);
-}
-else if (numeroA>numeroB){
-    console.log(`El numero ${numeroA} es el mayor`);
-    console.log(`El numero ${numeroB} es el menor`);
-}
-else {
-    console.log(`Los valores dados no son aceptables`);
-}
+cantidad = nombre.length;
+
+console.log(`Tu nombre tiene ${cantidad} caracteres`)
 
 

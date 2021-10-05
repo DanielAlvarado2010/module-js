@@ -1,7 +1,3 @@
-let numero = parseFloat(window.prompt(`Dame tu peso y te dire cuanto pesarias en la luna`));
-
-let gravedadluna=1.62;
-let gravedadTierra=9.81;
-let resultado=(numero/gravedadTierra)*gravedadluna;
-
-console.log(`Tu peso en la luna sería de ${resultado}`)
+let nombre = window.prompt(`Escribe tu nombre y te dire cuantas vocales tiene`);
+vocales=nombre.replace(/[^aeiouAEIOU]/g, "").length;
+console.log(`La cantidad de vocales que tiene tu nombre es ${vocales}`);
