@@ -1,3 +1,12 @@
-let nombre = window.prompt(`Escribe tu nombre y te dire cuantas vocales tiene`);
-vocales=nombre.replace(/[^aeiouAEIOU]/g, "").length;
-console.log(`La cantidad de vocales que tiene tu nombre es ${vocales}`);
+let dato = window.prompt("Escribe una cantidad de varios digitos y te dire cual es el resultado de su suma")
+
+let cadena = dato.match(/[123456789]/g);
+
+console.log(cadena)
+
+let suma=0;
+
+for(let i=0; i<cadena.length; i++) {
+   suma=suma+parseInt(cadena[i]);    
+}
+console.log(`El resultado de tu suma es ${suma}`);
