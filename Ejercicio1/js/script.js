@@ -116,6 +116,8 @@ const mentorsArray = [
 }
 ]
 
+// Ejercicio 1
+
 const promedioCurso = (mentorsArray, nombreCurso)=>{
   let resultado=0, promedio=0;
   mentorsArray.forEach((item) => {
