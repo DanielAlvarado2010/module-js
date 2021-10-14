@@ -1,203 +1,99 @@
-/* usando mentorsArray, realizar lo siguiente:
--Obtener el score promedio de cada materia( HTML, CSS, JS, ReactJS )
-
--Obtener el promedio individual de cada mentor
-
--Obtener la lista de mentores cuyo promedio sea mayor a 9.5 
-
--crear un array de strings con la siguiente forma:
-    "Mi nombre es {nombre} y mi promedio es de {promedio}"
+/*
+Ejercicio:
 */
-const mentorsArray = [
+const songsData = [
   {
-      name:"Ivan Diaz",
-      scores:[
-          {
-              signature:"HTML",
-              score:10
-          },
-          {
-              signature:"CSS",
-              score:10
-          },
-          {
-              signature:"JS",
-              score:10
-          },
-          {
-              signature:"ReactJS",
-              score:10
-          }
-      ]
+      name: "¿Dónde jugarán los niños?",
+      band: "Maná",
+      releaseYear: "1992",
+      statistics: {
+          likes: 20000,
+          reproductions: 8000
+      },
   },
   {
-      name:"Alan Medina",
-      scores:[
-          {
-              signature:"HTML",
-              score:8
-          },
-          {
-              signature:"CSS",
-              score:7
-          },
-          {
-              signature:"JS",
-              score:10
-          },
-          {
-              signature:"ReactJS",
-              score:10
-          }
-      ]
+      name: "La muralla verde",
+      band: "Enanitos Verdes",
+      releaseYear: "1986",
+      statistics: {
+          likes: 21000,
+          reproductions: 19000
+      },
   },
   {
-      name:"Elvira Camarillo",
-      scores:[
-          {
-              signature:"HTML",
-              score:9
-          },
-          {
-              signature:"CSS",
-              score:9
-          },
-          {
-              signature:"JS",
-              score:10
-          },
-          {
-              signature:"ReactJS",
-              score:9
-          }
-      ]
+      name: "Te Ví En Un Tren",
+      band: "Enanitos Verdes",
+      releaseYear: "1987",
+      statistics: {
+          likes: 20000,
+          reproductions: 23490
+      },
   },
   {
-      name:"Alejandra Paez",
-      scores:[
-          {
-              signature:"HTML",
-              score:8
-          },
-          {
-              signature:"CSS",
-              score:10
-          },
-          {
-              signature:"JS",
-              score:9
-          },
-          {
-              signature:"ReactJS",
-              score:10
-          }
-      ]
+      name: "Mariposa Traicionera",
+      band: "Maná",
+      releaseYear: "2002",
+      statistics: {
+          likes: 12000,
+          reproductions: 25690
+      },
   },
   {
-    name:"Pablo Escobar",
-    scores:[
-        {
-            signature:"HTML",
-            score:8
-        },
-        {
-            signature:"CSS",
-            score:10
-        },
-        {
-            signature:"JS",
-            score:9
-        },
-        {
-            signature:"ReactJS",
-            score:10
-        }
-    ]
-}
+      name: "Rayando el Sol",
+      band: "Maná",
+      releaseYear: "1990",
+      statistics: {
+          likes: 12000,
+          reproductions: 18000
+      },
+  },
+  {
+      name: "La celula que explota",
+      band: "Jaguares",
+      releaseYear: "1999",
+      statistics: {
+          likes: 12000,
+          reproductions: 23421
+      },
+  },
+  {
+      name: "No dejes que...",
+      band: "Jaguares",
+      releaseYear: "1999",
+      statistics: {
+          likes: 12345,
+          reproductions: 10000
+      },
+  }
 ]
 
-// Ejercicio 1
+// [
+//     'banda1',
+//     'banda2',
+// ];
 
-const promedioCurso = (mentorsArray, nombreCurso)=>{
-  let resultado=0, promedio=0;
-  mentorsArray.forEach((item) => {
-    item.scores.forEach((materia) => {
-      if(materia.signature === nombreCurso){
-        resultado += materia.score;
-        promedio=(resultado/5)
+/*
+- Agrupar los nombres de la bandas, que no esten repetidas
+- Agrupar las canciones por banda
+- La cancion con más reproducciones
+- La cancion con más likes
+*/
+
+const BandsName = songsData.reduce((accum, current) => {
+
+}, "")
+
+function getBands(songsData){
+
+  let final = songsData.map(({band}) => band).reduce((accum, current) =>  {
+      if(!accum.includes(current)){
+          accum.push(current);
       }
-    })      
-  });
-  return console.log(`El promedio de ${nombreCurso} es ${promedio}`)
+      return accum;
+  },[]);
 
+  return final;
 }
 
-promedioCurso(mentorsArray, "HTML");
-
-// Ejercicio2
-
-const promedioMentor = (mentorsArray, nombreMentor)=>{
-  let resultado=0, promedio=0;
-  mentorsArray.forEach((item) => {
-    if (item.name===nombreMentor) {
-      item.scores.forEach((materia) => {
-        resultado += materia.score;
-        promedio = resultado/4;     
-      })
-    }
-          
-  });
-  console.log(`El promedio de ${nombreMentor} es ${promedio}`)
-  return nombreMentor, promedio;
-
-}
-
-promedioMentor(mentorsArray, "Alejandra Paez")
-
-
-// Ejercicio 3
-
-const MejoresCalif = (mentorsArray)=>{
-  let resultado=0, promedio=0;
-  let mejores = [];
-  mentorsArray.forEach((item) => {
-    resultado=0;   
-      item.scores.forEach((materia) => {
-        resultado += materia.score;  
-        promedio =resultado/4;   
-        if(promedio>=9.5) {
-          mejores.push(item.name)
-        }
-      }) 
-           
-  });
-  return console.log(mejores)
-}
-
-MejoresCalif(mentorsArray);
-
-// Resultado sera arreglo con mentores con promedio mayor a 9.5
-// Sacar el promedio :
-// Iterar el arreglo de los mentores
-// Por cada mentor obtener el promedio
-// Evaluar el promedio del mentor si es mayor a 9.5 hacer un push al arreglo
-
-// Ejercicio 4
-
-const Saludo = (mentorsArray)=>{
-  let resultado=0, promedio=0;
-  let mejores = [];
-  mentorsArray.forEach((item) => {
-    resultado=0;   
-      item.scores.forEach((materia) => {
-        resultado += materia.score;  
-        promedio =resultado/4;
-        }) 
-        mejores.push(`Hola, mi nombre es ${item.name} y mi promedio es ${promedio}`)
-  });
-  return console.log(mejores)
-}
-
-Saludo(mentorsArray);
-
+console.log(getBands(songsData));
 
