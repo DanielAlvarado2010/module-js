@@ -1,99 +1,122 @@
-/*
-Ejercicio:
-*/
-const songsData = [
+let arrayPersons = [
   {
-      name: "¿Dónde jugarán los niños?",
-      band: "Maná",
-      releaseYear: "1992",
-      statistics: {
-          likes: 20000,
-          reproductions: 8000
-      },
+      name: "Phibee", age: 25, voted: true, gender: "mujer"
   },
   {
-      name: "La muralla verde",
-      band: "Enanitos Verdes",
-      releaseYear: "1986",
-      statistics: {
-          likes: 21000,
-          reproductions: 19000
-      },
+      name: "Katrinka", age: 26, voted: false, gender: "mujer"
   },
   {
-      name: "Te Ví En Un Tren",
-      band: "Enanitos Verdes",
-      releaseYear: "1987",
-      statistics: {
-          likes: 20000,
-          reproductions: 23490
-      },
+      name: "Bruno", age: 48, voted: false, gender: "hombre"
   },
   {
-      name: "Mariposa Traicionera",
-      band: "Maná",
-      releaseYear: "2002",
-      statistics: {
-          likes: 12000,
-          reproductions: 25690
-      },
+      name: "Jon", age: 22, voted: true, gender: "hombre"
   },
   {
-      name: "Rayando el Sol",
-      band: "Maná",
-      releaseYear: "1990",
-      statistics: {
-          likes: 12000,
-          reproductions: 18000
-      },
+      name: "Brian", age: 20, voted: false, gender: "hombre"
   },
   {
-      name: "La celula que explota",
-      band: "Jaguares",
-      releaseYear: "1999",
-      statistics: {
-          likes: 12000,
-          reproductions: 23421
-      },
+      name: "Eugene", age: 38, voted: true, gender: "hombre"
   },
   {
-      name: "No dejes que...",
-      band: "Jaguares",
-      releaseYear: "1999",
-      statistics: {
-          likes: 12345,
-          reproductions: 10000
-      },
-  }
+      name: "Big Bob", age: 29, voted: true, gender: "hombre"
+  },
+  {
+      name: "Ximena", age: 40, voted: false, gender: "mujer"
+  },
+  {
+      name: "Paulet", age: 37, voted: false, gender: "mujer"
+  },
+  {
+      name: "Harold", age: 45, voted: true, gender: "hombre"
+  },
+  {
+      name: "Gerald", age: 22, voted: false, gender: "hombre"
+  },
+  {
+      name: "Arnold", age: 35, voted: true, gender: "hombre"
+  },
+  {
+      name: "Gelga", age: 28, voted: true, gender: "mujer"
+  },
+  {
+      name: "Lila", age: 18, voted: true, gender: "mujer"
+  },
+  {
+      name: "Rhonda", age: 18, voted: true, gender: "mujer"
+  },
 ]
 
-// [
-//     'banda1',
-//     'banda2',
-// ];
-
 /*
-- Agrupar los nombres de la bandas, que no esten repetidas
-- Agrupar las canciones por banda
-- La cancion con más reproducciones
-- La cancion con más likes
+Usar reduce para obtener la siguiente informacion
+- Un array con aquellas personas que se vacunaron
+- la edad promedio de todos los vacunados
+- un array con aquellas personas que se vacunaron y que son menores a 30 años
+- la edad promedio de los no vacunados
+- el porcentaje de vacunados vs no vacunados
+- el procentaje de mujeres que se vacunaron
+- el porcentaje de los hombres que vacunarion
 */
 
-const BandsName = songsData.reduce((accum, current) => {
+// const vacunadosJovenes = () => {
+//   return arrayPersons.reduce((contador,persona) => {
+//   if (persona.age<30 && persona.voted==true){
+//     contador.push(persona)
+//   }
+//   return contador;
+// }, [])
+// // return result;
+// }
+// console.log(vacunadosJovenes())
 
-}, "")
 
-function getBands(songsData){
+// Ejercicio 3
 
-  let final = songsData.map(({band}) => band).reduce((accum, current) =>  {
-      if(!accum.includes(current)){
-          accum.push(current);
+
+const vacunadosJovenes = arrayPersons.reduce((contador,persona) => {
+  if (persona.age<30 && persona.voted==true){
+    contador.push(persona)
+  }
+  return contador;
+}, [])
+console.log(vacunadosJovenes)
+
+// Ejercicio 4
+
+function getAverageAgeNotVoted(arrayPersons){
+
+  let i = 0;
+  const notVotedPerson = arrayPersons.reduce((acumulate, current) => { 
+      //current.voted == false ? acumulate += current.age: acumulate;
+  
+      if(current.voted == false){
+          i ++;
+          return acumulate += current.age;
       }
-      return accum;
-  },[]);
+      else{
+          return acumulate;
+      }
 
-  return final;
+  }, 0);
+
+  return (notVotedPerson / i).toFixed(2);
+
 }
 
-console.log(getBands(songsData));
+console.log(getAverageAgeNotVoted(arrayPersons));
 
+// Ejercicio 5
+
+const porcentajeVacunacion = () => {
+  let result = arrayPersons.reduce( (contador, persona) => {
+  if(persona.voted ==true){
+    contador.push(persona);
+  }
+  return contador;
+}, [])  
+let porcentajeVacunados = result.length/arrayPersons.length * 100;
+let porcentajeNoVacunados= 100-porcentajeVacunados;
+return console.log(`El porcentaje de vacunados es ${porcentajeVacunados} y el de no vacunados es ${porcentajeNoVacunados}`)
+
+  
+}
+porcentajeVacunacion();
