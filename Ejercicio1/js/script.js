@@ -177,7 +177,8 @@ function Persona(name, lastName) {
 
   function getAge (age) {
     const currentYear = new Date().getFullYear()
-    age = age.slice(0,4)
+    age = parseInt(birthday.slice(0,4))
+    console.log(age);
     return currentYear - parseInt(age.slice(0,4))
   }
   
@@ -187,10 +188,11 @@ function Persona(name, lastName) {
     },0)
   }
   
-  function Koder (name, lastName, age, generation, bootcamp, promedio) {
+  function Koder (name, lastName, birthday, generation, bootcamp, promedio) {
       this.name = name
       this.lastName = lastName
-      this.age = getAge(age)
+      this.birthday = birthday
+      this.age = getAge(birthday)
       this.generation = generation
       this.bootcamp = bootcamp
       this.promedio = parseInt(getPromedio(promedio).toFixed(2))
