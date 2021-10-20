@@ -175,29 +175,71 @@ function Persona(name, lastName) {
   }
   */
 
-  function getAge (age) {
-    const currentYear = new Date().getFullYear()
-    age = parseInt(birthday.slice(0,4))
-    console.log(age);
-    return currentYear - parseInt(age.slice(0,4))
-  }
+//   function getAge (age) {
+//     const currentYear = new Date().getFullYear()
+//     age = parseInt(birthday.slice(0,4))
+//     console.log(age);
+//     return currentYear - parseInt(age.slice(0,4))
+//   }
   
-  function getPromedio (scores) {
-    return scores.reduce((acum, next) => {
-      return acum + next.score / scores.length
-    },0)
-  }
+//   function getPromedio (scores) {
+//     return scores.reduce((acum, next) => {
+//       return acum + next.score / scores.length
+//     },0)
+//   }
   
-  function Koder (name, lastName, birthday, generation, bootcamp, promedio) {
-      this.name = name
-      this.lastName = lastName
-      this.birthday = birthday
-      this.age = getAge(birthday)
-      this.generation = generation
-      this.bootcamp = bootcamp
-      this.promedio = parseInt(getPromedio(promedio).toFixed(2))
-  }
+//   function Koder (name, lastName, birthday, generation, bootcamp, promedio) {
+//       this.name = name
+//       this.lastName = lastName
+//       this.birthday = birthday
+//       this.age = getAge(birthday)
+//       this.generation = generation
+//       this.bootcamp = bootcamp
+//       this.promedio = parseInt(getPromedio(promedio).toFixed(2))
+//   }
   
-  const newKoders = koders.map(function(koder) {
-      return new Koder(koder.name, koder.lastName, koder.birthday, koder.generation, koder.bootcamp, koder.scores)
-  })
+//   const newKoders = koders.map(function(koder) {
+//       return new Koder(koder.name, koder.lastName, koder.birthday, koder.generation, koder.bootcamp, koder.scores)
+//   })
+
+//   class Persona {
+//       constructor (name, lastName) {
+//           this.name = name;
+//           this.lastName = lastName;
+//       }
+//   }
+
+// Pasos:
+// Iterar el arreglo con map
+// generar una funcion constructora
+//por cada elemento vamos a crear un objeto tipo Koder
+//retornar nuestro nuevo objeto tipo Koder
+
+
+class Alumno {
+    constructor(name, lastName, bootcamp, promedio) {
+    this.name = name;
+    this.lastName = lastName;
+    this.bootcamp = bootcamp;
+    this.promedio = promedio;
+    }
+}
+
+const getAverage = (calificaciones) => {
+    const promedio = calificaciones.reduce ((accum, currentValue) => {
+        return accum + currentValue.score / calificaciones.length; 
+    }, 0)
+    return promedio;
+}
+
+function koderFactory (KodersArray) {
+    const newKoders = KodersArray.map ((koder) => {
+        const promedio = getAverage(koder.scores);
+        const koderType = new Alumno(koder.name , koder.lastName, koder.bootcamp, promedio)
+        return koderType;
+    })
+    return newKoders;
+}
+
+console.log(koderFactory(koders))
+
