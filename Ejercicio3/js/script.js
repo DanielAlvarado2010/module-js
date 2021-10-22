@@ -103,7 +103,7 @@ const headerBySignatures = mentorsArray[0].scores.forEach(mentor => {
 const thAverage = document.createElement('th')
 const headerAverage = document.createTextNode('Average');
 thAverage.appendChild(headerAverage);
-header.appendChild(thAverage)
+header.appendChild(thAverage);
 table.appendChild(header);
 
 //Función que recorre primero por mentor.name y luego por signature.scores
@@ -113,7 +113,7 @@ const inspectMentor = () =>{
         const tdMentor = document.createElement('th');
         const nameMentor = document.createTextNode(mentor.name);
         tdMentor.appendChild(nameMentor);
-        trMentor.appendChild(tdMentor)
+        trMentor.appendChild(tdMentor);
 
         const inspectSignatures = mentor.scores.map(signature=>{
             const tdSignature = document.createElement('td');
@@ -131,8 +131,22 @@ const inspectMentor = () =>{
         trMentor.appendChild(thAverage)
         
         table.appendChild(trMentor)
+
+        const buttonSelector = document.querySelectorAll(`button`)
+        const button = document.createElement("button")
+        const tdButton = document.createElement("td")
+        button.textContent = "Eliminar";
+        button.classList.add(`btn`)
+        button.classList.add("btn-dark")
+        tdButton.appendChild(button);
+        trMentor.appendChild(tdButton);
     })
+      
+    
+  
+
 }
 inspectMentor();
 console.log(table);
 document.body.appendChild(table);
+
